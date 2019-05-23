@@ -5,6 +5,8 @@ import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './app.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { ListaComponent } from './shared/lista/lista.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TokenModule } from './util/token/token.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ListaComponent } from './shared/lista/lista.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    TokenModule
   ],
   providers: [],
   bootstrap: [AppComponent]
