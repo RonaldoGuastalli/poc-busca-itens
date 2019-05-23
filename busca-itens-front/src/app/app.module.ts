@@ -7,6 +7,8 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { ListaComponent } from './shared/lista/lista.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TokenModule } from './util/token/token.module';
+import { ItemRestService } from './tela-inicial/services/item-rest.service';
+import { ItemRequestMapper } from './tela-inicial/mapper/Item-request.mapper';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { TokenModule } from './util/token/token.module';
     HttpClientModule,
     TokenModule
   ],
-  providers: [],
+  providers: [ItemRestService, ItemRequestMapper],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

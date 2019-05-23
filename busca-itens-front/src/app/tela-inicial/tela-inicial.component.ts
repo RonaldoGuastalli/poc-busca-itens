@@ -9,12 +9,17 @@ import { ItemService } from './services/item.service';
 })
 export class TelaInicialComponent implements OnInit {
 
+
   constructor(private service: ItemService) { }
 
+
   ngOnInit() {
-    this.service.getItens('parace').subscribe(e => {
-      console.log(e);      
-    });
+    // this.service.getItens('parace').subscribe(e => {
+    //   this.itens = e;
+    //   console.table(this.itens.map(item => item));      
+    // });
+
+    this.service.getItens();
   }
 
 }
