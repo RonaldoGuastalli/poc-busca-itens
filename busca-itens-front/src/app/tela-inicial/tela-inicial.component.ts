@@ -12,13 +12,20 @@ import { map } from 'rxjs/operators';
 })
 export class TelaInicialComponent implements OnInit {
   private itens: Observable<ItemResponseModel[]>;
+  private estoqueLoja: Observable<ItemResponseModel[]>;
   
   constructor(private service: ItemService) { }
   ngOnInit() {
+
     this.itens = this.service.getItens()
     .pipe(
       map(i => i)
-      );  
+      ); 
+      
+    this.estoqueLoja = this.service.getEstoque()
+      .pipe(
+        map(estoque => estoque)
+      )
   }
 
 }

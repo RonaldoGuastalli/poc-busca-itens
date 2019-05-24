@@ -22,5 +22,14 @@ private listaResponse:ItemResponseModel[];
           map(e => ItemRequestMapper.mapDaLista(e))
           );
   }
+
+  public getEstoque(): Observable<ItemResponseModel[]>{
+    return this.itemRestService.getEstoqueItemNaLoja(484160)
+      .pipe(
+        map(
+          e => ItemRequestMapper.estoqueModel(e)
+        )
+      )
+  }
   
 }
