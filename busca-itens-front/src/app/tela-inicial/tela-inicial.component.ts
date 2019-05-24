@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemService } from './services/item.service';
+import { ItemResponseModel } from './model/item-response.model';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -8,18 +11,14 @@ import { ItemService } from './services/item.service';
   providers: [ItemService]
 })
 export class TelaInicialComponent implements OnInit {
-
-
+  private itens: Observable<ItemResponseModel[]>;
+  
   constructor(private service: ItemService) { }
-
-
   ngOnInit() {
-    // this.service.getItens('parace').subscribe(e => {
-    //   this.itens = e;
-    //   console.table(this.itens.map(item => item));      
-    // });
-
-    this.service.getItens();
+    this.itens = this.service.getItens()
+    .pipe(
+      map(i => i)
+      );  
   }
 
 }

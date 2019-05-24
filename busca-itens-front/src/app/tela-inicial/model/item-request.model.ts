@@ -11,5 +11,4 @@ export class ItemRequestModel {
         public participaListaReferencial?: boolean,
         public participaFarmaciaPopular?: boolean,
     ){ }
-
 }
