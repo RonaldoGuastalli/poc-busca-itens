@@ -7,7 +7,7 @@ import { EstoqueRequestModel } from '../model/estoque-request.model';
 
 export class ItemRequestMapper {
 
-    constructor(private itemRequestModel: ItemRequestModel[], private estoqueRequestModel: EstoqueRequestModel[] ){}
+    constructor(){}
 
     public static mapDaLista(itens: ItemRequestModel[]): ItemResponseModel[] {            
         return  itens.map((request: ItemRequestModel) =>
