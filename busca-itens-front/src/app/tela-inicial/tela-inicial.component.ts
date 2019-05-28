@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { ItemService } from './services/item.service';
 import { ItemResponseModel } from './model/item-response.model';
 import { Observable } from 'rxjs';
@@ -13,41 +13,32 @@ import { ItemRequestMapper } from './mapper/Item-request.mapper';
   styleUrls: ['./tela-inicial.component.css'],
   providers: [ItemService]
 })
-export class TelaInicialComponent implements OnInit {
+export class TelaInicialComponent implements OnChanges, OnInit {  
   private itens: Observable<ItemResponseModel[]>;
   private estoqueLoja: Observable<ItemResponseModel[]>;
-
   private itensNovo: Observable<ItemResponseModel[]>;
-
   private objetoFinal: Observable<any>;
+  private textoEmetido: string;
+  private listaDeItens: Array<any> = new Array<any>();
 
 
   constructor(private service: ItemService) { }
-  ngOnInit() {
 
-    this.itens = this.service.getItens()
-      .pipe(
-        map(i => i)
-      );
+  ngOnChanges() {        
+  }
 
-    this.estoqueLoja = this.service.getEstoque()
-      .pipe(
-        map(estoque => estoque)
-      )
+  ngOnInit(){
+  }
 
-    // let ola = this.service.getForkItens('para')
-    //   .pipe(
-    //     map(e => {
-    //       console.log('>>> forJoin result', e);
-    //       console.log('>>>> itens', e[0]);
-    //       console.log('>>>> estoque', e[1]);
-    //       console.log('>>>> detalhes', e[2]);
-    //     })).subscribe();
+  chegadaTexto(texto: string) {
+    this.textoEmetido = texto
+    this.service.getItensDaApi(texto); 
+    this.listarItens();
+      
+  }
 
-    console.log('>>> jusfaguisfagh',this.service.getItensDaApi());
-        
-    //console.log('>>> resultado', ItemRequestMapper.getItensTelaInicial(this.service));
-
+  public listarItens(){
+    this.listaDeItens = this.service.getListaItens();    
   }
 
 }

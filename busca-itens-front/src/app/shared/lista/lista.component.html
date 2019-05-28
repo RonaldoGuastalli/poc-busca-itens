@@ -1,6 +1,23 @@
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
-</div>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Código</th>
+        <th scope="col">Estoque</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Descrição</th>
+        <th scope="col">EAN</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of resultadoDaPesquisa">
+      <tr>
+        <th scope="row">1</th>
+        <td>{{item.codigoItem}}</td>
+        <td>{{item.estoqueLoja}}</td>
+        <td>{{item.precoDe}}</td>
+        <td>{{item.nomenclaturaVarejo}}</td>
+        <td>{{item.ean}}</td>
+      </tr>
+    </tbody>
+  </table>
+  

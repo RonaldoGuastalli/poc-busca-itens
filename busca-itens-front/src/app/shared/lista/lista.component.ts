@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-lista',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaComponent implements OnInit {
 
+  @Input() private resultadoDaPesquisa: Array<any> = new Array<any>();
+
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

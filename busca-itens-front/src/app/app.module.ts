@@ -9,12 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { TokenModule } from './util/token/token.module';
 import { ItemRestService } from './tela-inicial/services/item-rest.service';
 import { ItemRequestMapper } from './tela-inicial/mapper/Item-request.mapper';
+import { InputItemComponent } from './shared/input-item/input-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TelaInicialComponent,
-    ListaComponent
+    ListaComponent,
+    InputItemComponent
   ],
   imports: [
     BrowserModule,
