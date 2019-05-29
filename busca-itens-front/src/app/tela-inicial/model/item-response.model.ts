@@ -8,8 +8,8 @@ export class ItemResponseModel {
     ean: number;
     promocao: string;
     precoPor: number;
-    nomeclatura: string;
-    nomeclaturaDetalhada: string;
+    nomenclatura: string;
+    nomenclaturaDetalhada: string;
     principioAtivo: string;
     classeTerapeutica: string;
     situacaoDoItem: string;

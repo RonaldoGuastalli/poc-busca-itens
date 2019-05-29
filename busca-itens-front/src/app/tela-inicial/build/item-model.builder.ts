@@ -50,8 +50,8 @@ export class ItemModelBuilder {
             this.itemModel.promocao = dados.origemDesconto;
             this.itemModel.precoPor = dados.precoPor;
             this.itemModel.precoDe = dados.precoDe;
-            this.itemModel.nomeclatura = dados.nomenclatura;
-            this.itemModel.nomeclaturaDetalhada = dados.nomenclaturaDetalhada;
+            this.itemModel.nomenclatura = dados.nomenclatura;
+            this.itemModel.nomenclaturaDetalhada = dados.nomenclaturaDetalhada;
             this.itemModel.principioAtivo = dados.principioAtivo;
             this.itemModel.classeTerapeutica = dados.classeTerapeutica;
             this.itemModel.situacaoDoItem = dados.situacaoItem;

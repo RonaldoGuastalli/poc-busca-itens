@@ -10,21 +10,26 @@ import { TokenModule } from './util/token/token.module';
 import { ItemRestService } from './tela-inicial/services/item-rest.service';
 import { ItemRequestMapper } from './tela-inicial/mapper/Item-request.mapper';
 import { InputItemComponent } from './shared/input-item/input-item.component';
+import { ModalDetalheComponent } from './shared/modal-detalhe/modal-detalhe.component';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     TelaInicialComponent,
     ListaComponent,
-    InputItemComponent
+    InputItemComponent,
+    ModalDetalheComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TokenModule
+    TokenModule,
+    NgbModule
   ],
   providers: [ItemRestService, ItemRequestMapper],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ListaComponent, ModalDetalheComponent]
 })
 export class AppModule { }
