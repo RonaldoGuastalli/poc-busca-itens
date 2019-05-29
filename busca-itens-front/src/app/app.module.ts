@@ -11,6 +11,7 @@ import { ItemRestService } from './tela-inicial/services/item-rest.service';
 import { InputItemComponent } from './shared/input-item/input-item.component';
 import { ModalDetalheComponent } from './shared/modal-detalhe/modal-detalhe.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NavbarAppComponent } from './shared/navbar-app/navbar-app.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     TelaInicialComponent,
     ListaComponent,
     InputItemComponent,
-    ModalDetalheComponent
+    ModalDetalheComponent,
+    NavbarAppComponent
   ],
   imports: [
     BrowserModule,
