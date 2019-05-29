@@ -1,0 +1,27 @@
+<div>
+    <div class="modal-header">
+        <h4 class="modal-title">{{detalheItem.nomenclatura}}</h4>
+    </div>
+    <div class="modal-body">
+        <h5><strong>nomenclatura detalhada</strong></h5>
+        <h6>{{detalheItem.nomenclaturaDetalhada}}</h6>
+        <h5><strong>preço</strong></h5>
+        <h6>{{detalheItem.promocao}} de: R${{detalheItem.precoDe}} | por: R${{detalheItem.precoPor}}</h6>
+        <h5><strong>princípio ativo</strong></h5>
+        <h6>{{detalheItem.principioAtivo}}</h6>
+        <h5><strong>classe terapeutica</strong></h5>
+        <h6>{{detalheItem.classeTerapeutica}}</h6>
+        <h5><strong>situação do item</strong></h5>
+        <h6>{{detalheItem.situacaoDoItem}}</h6>
+        <h5><strong>advertência</strong></h5>
+        <h6>{{detalheItem.advertencias}}</h6>
+        <h5><strong>catogorias</strong></h5>
+        <ol>
+            <li *ngFor="let categoria of detalheItem.categorias">{{categoria.descricao}}</li>
+        </ol>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Fechar</button>
+    </div>
+</div>
