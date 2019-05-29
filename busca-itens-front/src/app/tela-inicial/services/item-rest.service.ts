@@ -6,7 +6,6 @@ import { ItemRequestModel } from '../model/item-request.model';
 import { EstoqueRequestModel } from '../model/estoque-request.model';
 import { itemDetalhe } from '../model/item-detalhe.model';
 import { PrecoRequestModel } from '../model/preco-request.model';
-import { ItemDetalheCompletoModel } from '../model/item-detalhe-completo.model';
 
 @Injectable()
 export class ItemRestService {

@@ -1,11 +1,7 @@
 import { ItemResponseModel } from '../model/item-response.model';
-import { ItemRestService } from '../services/item-rest.service';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 import { ItemRequestModel } from '../model/item-request.model';
 import { EstoqueRequestModel } from '../model/estoque-request.model';
 import { PrecoRequestModel } from '../model/preco-request.model';
-import { IfStmt } from '@angular/compiler';
 import { ItemDetalheCompletoModel } from '../model/item-detalhe-completo.model';
 
 export class ItemModelBuilder {
@@ -30,23 +26,23 @@ export class ItemModelBuilder {
         return this;
     }
 
-    public eanDoItem(dados: ItemDetalheCompletoModel): ItemModelBuilder{
-        if(this.itemModel.codigoItem === dados.codigo){
+    public eanDoItem(dados: ItemDetalheCompletoModel): ItemModelBuilder {
+        if (this.itemModel.codigoItem === dados.codigo) {
             this.itemModel.ean = dados.ean;
-        }    
-        
+        }
+
         return this;
     }
 
     public precoDoProduto(dados: PrecoRequestModel): ItemModelBuilder {
-        if(this.itemModel.codigoItem === dados.codigoItem){
+        if (this.itemModel.codigoItem === dados.codigoItem) {
             this.itemModel.precoDe = dados.preco.precoVenda;
-        }          
+        }
         return this;
     }
 
-    public detalheCompleoDoItem(dados: ItemDetalheCompletoModel): ItemModelBuilder{        
-        if(this.itemModel.codigoItem === dados.codigo){
+    public detalheCompletoDoItem(dados: ItemDetalheCompletoModel): ItemModelBuilder {
+        if (this.itemModel.codigoItem === dados.codigo) {
             this.itemModel.promocao = dados.origemDesconto;
             this.itemModel.precoPor = dados.precoPor;
             this.itemModel.precoDe = dados.precoDe;
@@ -57,8 +53,7 @@ export class ItemModelBuilder {
             this.itemModel.situacaoDoItem = dados.situacaoItem;
             this.itemModel.advertencias = dados.advertencias;
             this.itemModel.categorias = dados.categorias;
-        }    
-        
+        }
         return this;
     }
 
