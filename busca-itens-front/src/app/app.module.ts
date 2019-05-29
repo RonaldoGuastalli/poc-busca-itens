@@ -8,7 +8,6 @@ import { ListaComponent } from './shared/lista/lista.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TokenModule } from './util/token/token.module';
 import { ItemRestService } from './tela-inicial/services/item-rest.service';
-import { ItemRequestMapper } from './tela-inicial/mapper/Item-request.mapper';
 import { InputItemComponent } from './shared/input-item/input-item.component';
 import { ModalDetalheComponent } from './shared/modal-detalhe/modal-detalhe.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +27,7 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     TokenModule,
     NgbModule
   ],
-  providers: [ItemRestService, ItemRequestMapper],
+  providers: [ItemRestService],
   bootstrap: [AppComponent],
   entryComponents: [ListaComponent, ModalDetalheComponent]
 })

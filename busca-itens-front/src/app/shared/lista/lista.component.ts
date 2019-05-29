@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDetalheComponent } from '../modal-detalhe/modal-detalhe.component';
 import { ItemModelBuilder } from 'src/app/tela-inicial/build/item-model.builder';
 
@@ -10,17 +10,17 @@ import { ItemModelBuilder } from 'src/app/tela-inicial/build/item-model.builder'
 })
 export class ListaComponent implements OnInit {
 
-  @Input() private resultadoDaPesquisa: Array<any> = new Array<any>();
+  @Input() private resultadoDaPesquisa: Array<any>;
 
-  constructor(private modalService: NgbModal ) { }
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
-    
+
   }
 
-  public openModal(item: ItemModelBuilder){
+  public openModal(item: ItemModelBuilder) {
     console.log(item);
-    let modal = this.modalService.open(ModalDetalheComponent, {size: 'lg'});
+    let modal = this.modalService.open(ModalDetalheComponent, { size: 'lg' });
     modal.componentInstance.detalheItem = item;
   }
 

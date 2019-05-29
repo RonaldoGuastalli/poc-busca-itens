@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-input-item',
