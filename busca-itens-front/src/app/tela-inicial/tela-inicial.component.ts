@@ -2,10 +2,6 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { ItemService } from './services/item.service';
 import { ItemResponseModel } from './model/item-response.model';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Builder } from 'builder-pattern';
-import { forEach } from '@angular/router/src/utils/collection';
-import { ItemRequestMapper } from './mapper/Item-request.mapper';
 
 @Component({
   selector: 'app-tela-inicial',
