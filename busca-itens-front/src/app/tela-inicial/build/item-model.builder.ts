@@ -3,12 +3,13 @@ import { ItemRequestModel } from '../model/item-request.model';
 import { EstoqueRequestModel } from '../model/estoque-request.model';
 import { PrecoRequestModel } from '../model/preco-request.model';
 import { ItemDetalheCompletoModel } from '../model/item-detalhe-completo.model';
+import { Component, Injectable, Pipe } from '@angular/core';
 
 export class ItemModelBuilder {
     private itemModel: ItemResponseModel;
 
     constructor() {
-        this.itemModel = new ItemResponseModel();
+        this.instanciaDeItemModel()
     }
 
     public static get() {
@@ -58,6 +59,14 @@ export class ItemModelBuilder {
     }
 
     public build(): ItemResponseModel {
+        return this.itemModel;
+    }
+
+    public instanciaDeItemModel(){
+        return this.itemModel = new ItemResponseModel();
+    }
+
+    public getItemModel(){
         return this.itemModel;
     }
 }
