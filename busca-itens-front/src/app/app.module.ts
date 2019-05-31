@@ -12,6 +12,7 @@ import { InputItemComponent } from './shared/input-item/input-item.component';
 import { ModalDetalheComponent } from './shared/modal-detalhe/modal-detalhe.component';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NavbarAppComponent } from './shared/navbar-app/navbar-app.component';
+import { ItemService } from './tela-inicial/services/item.service';
 
 @NgModule({
   declarations: [

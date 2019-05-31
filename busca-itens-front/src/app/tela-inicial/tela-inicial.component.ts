@@ -9,32 +9,26 @@ import { Observable } from 'rxjs';
   styleUrls: ['./tela-inicial.component.css'],
   providers: [ItemService]
 })
-export class TelaInicialComponent implements OnChanges, OnInit {  
-  private itens: Observable<ItemResponseModel[]>;
-  private estoqueLoja: Observable<ItemResponseModel[]>;
-  private itensNovo: Observable<ItemResponseModel[]>;
-  private objetoFinal: Observable<any>;
+export class TelaInicialComponent {
+  // private itens: Observable<ItemResponseModel[]>;
+  // private estoqueLoja: Observable<ItemResponseModel[]>;
+  // private itensNovo: Observable<ItemResponseModel[]>;
+  // private objetoFinal: Observable<any>;
   private textoEmetido: string;
-  private listaDeItens: Array<any> = new Array<any>();
+  private listaDeItens: Array<any>;
 
 
   constructor(private service: ItemService) { }
 
-  ngOnChanges() {        
-  }
-
-  ngOnInit(){
-  }
-
   chegadaTexto(texto: string) {
     this.textoEmetido = texto
-    this.service.getItensDaApi(texto); 
+    this.service.getItensDaApi(texto);
     this.listarItens();
-      
+
   }
 
-  public listarItens(){
-    this.listaDeItens = this.service.getListaItens();    
+  public listarItens() {
+    this.listaDeItens = this.service.getListaItens();
   }
 
 }
