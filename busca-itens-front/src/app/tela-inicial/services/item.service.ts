@@ -14,10 +14,13 @@ export class ItemService {
   constructor(private itemRestService: ItemRestService) { }
 
   public getItensDaApi(nomeItem: string) {
-    this.itemRestService.getListaItens(nomeItem).subscribe(res => {
+    this.itemRestService.getListaItens(nomeItem).subscribe({
+      next: res => {
       res.map(item => {
         return this.fazerForkJoin(item)
       })
+      }, 
+      error: err => console.log(err)      
     });
   }
 

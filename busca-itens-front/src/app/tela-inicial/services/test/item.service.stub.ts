@@ -8,16 +8,15 @@ import { ItemDetalheCompletoModel } from '../../model/item-detalhe-completo.mode
 import { PrecoRequestModel } from '../../model/preco-request.model';
 import { Preco } from '../../model/preco';
 import { Categoria } from '../../model/categoria';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
+import { ItemRestService } from '../item-rest.service';
 
 export class ItemServiceStub {
 
-    public static getListaItens(): Observable<ItemRequestModel[]> {
-        return Observable.create((itemRquestModel) => {
-            itemRquestModel.next([ItemServiceStub.mockItemRequestModel()]);
-            itemRquestModel.complete()
-        })
-    }
+    public getListaItens() {}
+
+    public fazerForkJoin() {}
+    //dados mockados
 
     public static mockItemResponseModel(): ItemResponseModel {
         return Builder<ItemResponseModel>()
@@ -38,19 +37,21 @@ export class ItemServiceStub {
             .build()
     }
 
-    public static mockItemRequestModel(): ItemRequestModel {
-        return Builder<ItemRequestModel>()
-            .codigoItem(851730)
-            .nomenclaturaVarejo('paracetamol')
-            .nomeDetalhado('paracetamol dc 150mg')
-            .possuiItemAVencer(false)
-            .participaPbm(false)
-            .permiteAdesao(false)
-            .possuiKitAdesao(false)
-            .exclusivoPanvel(false)
-            .participaListaReferencial(false)
-            .participaFarmaciaPopular(false)
-            .build()
+    public static mockItemRequestModel(): ItemRequestModel[] {
+        return [
+                Builder<ItemRequestModel>()
+                .codigoItem(851730)
+                .nomenclaturaVarejo('paracetamol')
+                .nomeDetalhado('paracetamol dc 150mg')
+                .possuiItemAVencer(false)
+                .participaPbm(false)
+                .permiteAdesao(false)
+                .possuiKitAdesao(false)
+                .exclusivoPanvel(false)
+                .participaListaReferencial(false)
+                .participaFarmaciaPopular(false)
+                .build()
+            ]
     }
 
     public static mockEstoqueRequestModel(): EstoqueRequestModel {
