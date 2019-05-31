@@ -4,23 +4,21 @@ import { Observable, forkJoin } from 'rxjs';
 import { ItemRestService } from './item-rest.service';
 import { ItemModelBuilder } from '../build/item-model.builder';
 import { ItemRequestModel } from '../model/item-request.model';
+import { ItemResponseModel } from '../model/item-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
-  private listaDeItens: Array<any>;
+  public listaDeItens: Array<any>;
 
   constructor(private itemRestService: ItemRestService) { }
 
   public getItensDaApi(nomeItem: string) {
-    this.itemRestService.getListaItens(nomeItem).subscribe({
-      next: res => {
-      res.map(item => {
-        return this.fazerForkJoin(item)
-      })
-      }, 
-      error: err => console.log(err)      
+    this.itemRestService.getListaItens(nomeItem)
+      .subscribe({
+        next: res => res.map(item => this.fazerForkJoin(item)), 
+        error: err => console.log(err)      
     });
   }
 
@@ -31,24 +29,24 @@ export class ItemService {
     return forkJoin([estoque, detalhe, preco]);
   }
 
-  public getListaItens() {
+  public getListaItens(): any[] {
     this.listaDeItens = new Array<any>();
     return this.listaDeItens;
   }
 
-  public fazerForkJoin(item: ItemRequestModel) {
-    return this.getForkItens(item.codigoItem).subscribe(res => {
+  public fazerForkJoin(item: ItemRequestModel): void {
+    this.getForkItens(item.codigoItem).subscribe(res => {
       this.pushDosItensPesquisados(item, res)
     });
   }
 
-  public pushDosItensPesquisados(item: ItemRequestModel, res: any) {
-    return this.listaDeItens.push(
+  public pushDosItensPesquisados(item: ItemRequestModel, res: any): void {
+    this.listaDeItens.push(
       this.montagemDoBuilder(item, res)
     );
   }
 
-  public montagemDoBuilder(item: ItemRequestModel, res: any) {
+  public montagemDoBuilder(item: ItemRequestModel, res: any): ItemResponseModel {
     return ItemModelBuilder.get()
       .dadosAutocomplete(item)
       .dadosEstoque(res[0][0])

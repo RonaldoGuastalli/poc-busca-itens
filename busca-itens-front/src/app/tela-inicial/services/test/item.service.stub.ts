@@ -8,16 +8,18 @@ import { ItemDetalheCompletoModel } from '../../model/item-detalhe-completo.mode
 import { PrecoRequestModel } from '../../model/preco-request.model';
 import { Preco } from '../../model/preco';
 import { Categoria } from '../../model/categoria';
-import { Observable, forkJoin } from 'rxjs';
-import { ItemRestService } from '../item-rest.service';
 
 export class ItemServiceStub {
 
-    public getListaItens() {}
+    public getListaItens() { }
 
-    public fazerForkJoin() {}
+    public getEstoqueItemNaLoja() { }
+
+    public buscaDetalhe() { }
+
+    public getPrecos() { }
+
     //dados mockados
-
     public static mockItemResponseModel(): ItemResponseModel {
         return Builder<ItemResponseModel>()
             .codigoItem(851730)
@@ -39,7 +41,7 @@ export class ItemServiceStub {
 
     public static mockItemRequestModel(): ItemRequestModel[] {
         return [
-                Builder<ItemRequestModel>()
+            Builder<ItemRequestModel>()
                 .codigoItem(851730)
                 .nomenclaturaVarejo('paracetamol')
                 .nomeDetalhado('paracetamol dc 150mg')
@@ -51,19 +53,36 @@ export class ItemServiceStub {
                 .participaListaReferencial(false)
                 .participaFarmaciaPopular(false)
                 .build()
-            ]
+        ]
     }
 
-    public static mockEstoqueRequestModel(): EstoqueRequestModel {
-        return Builder<EstoqueRequestModel>()
-            .estoqueLoja(2)
-            .estoqueApoio(2)
-            .reservaVirtual(2)
-            .estoqueCd(2)
-            .estoqueCdApoio(2)
-            .filial(101)
+    public static mockItemRequestModelUnico(): ItemRequestModel {
+        return Builder<ItemRequestModel>()
             .codigoItem(851730)
+            .nomenclaturaVarejo('paracetamol')
+            .nomeDetalhado('paracetamol dc 150mg')
+            .possuiItemAVencer(false)
+            .participaPbm(false)
+            .permiteAdesao(false)
+            .possuiKitAdesao(false)
+            .exclusivoPanvel(false)
+            .participaListaReferencial(false)
+            .participaFarmaciaPopular(false)
             .build()
+    }
+
+    public static mockEstoqueRequestModel(): EstoqueRequestModel[] {
+        return [
+            Builder<EstoqueRequestModel>()
+                .estoqueLoja(2)
+                .estoqueApoio(2)
+                .reservaVirtual(2)
+                .estoqueCd(2)
+                .estoqueCdApoio(2)
+                .filial(101)
+                .codigoItem(851730)
+                .build()
+        ]
     }
 
     public static mockItemDetalheCompletoModel(): ItemDetalheCompletoModel {
