@@ -1,4 +1,7 @@
+<app-navbar-app></app-navbar-app>
 <div class="container-fluid">
     <app-input-item (emitirEvento)="chegadaTexto($event)"></app-input-item>
-    <app-lista [resultadoDaPesquisa]="listaDeItens"></app-lista>
+    <div>
+        <app-lista [resultadoDaPesquisa]="listaDeItens"></app-lista>
+    </div>
 </div>

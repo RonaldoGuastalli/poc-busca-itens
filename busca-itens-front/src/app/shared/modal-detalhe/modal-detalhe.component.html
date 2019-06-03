@@ -1,5 +1,5 @@
 <div>
-    <div class="modal-header">
+    <div class="modal-header modal-titulo">
         <h4 class="modal-title">{{detalheItem.nomenclatura}}</h4>
         <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
             <span aria-hidden="true">&times;</span>
@@ -20,10 +20,10 @@
         <h5 *ngIf="detalheItem.situacaoDoItem"><strong>situação do item</strong></h5>
         <h6>{{detalheItem.situacaoDoItem}}</h6>
 
-        <h5 *ngIf="detalheItem.advertencias === []"><strong>advertências</strong></h5>
+        <h5 *ngIf="detalheItem.advertencias[0]"><strong>advertências</strong></h5>
         <h6>{{detalheItem.advertencias}}</h6>
 
-        <h5 *ngIf="detalheItem.categorias"><strong>catogorias</strong></h5>
+        <h5 *ngIf="detalheItem.categorias[0]"><strong>catogorias</strong></h5>
         <ol>
             <li *ngFor="let categoria of detalheItem.categorias">{{categoria.descricao}}</li>
         </ol>

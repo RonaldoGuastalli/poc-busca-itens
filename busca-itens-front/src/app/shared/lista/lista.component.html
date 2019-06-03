@@ -1,23 +1,24 @@
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Código</th>
-        <th scope="col">Estoque</th>
-        <th scope="col">Preço</th>
-        <th scope="col">Descrição</th>
-        <th scope="col">EAN</th>
-      </tr>
-    </thead>
-    <tbody *ngFor="let item of resultadoDaPesquisa; let i = index">
-      <tr (click)="openModal(item)">
-        <th scope="row">{{i}}</th>
-        <td>{{item.codigoItem}}</td>
-        <td>{{item.estoqueLoja}}</td>
-        <td>{{item.precoDe}}</td>
-        <td>{{item.nomenclatura}}</td>
-        <td>{{item.ean}}</td>
-      </tr>
-    </tbody>
-  </table>
-  
+ <div>
+   <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Código</th>
+          <th scope="col">Estoque</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">EAN</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of resultadoDaPesquisa; let i = index">
+        <tr (click)="openModal(item)">
+          <th scope="row">{{i}}</th>
+          <td>{{item.codigoItem}}</td>
+          <td>{{item.estoqueLoja}}</td>
+          <td>R$ {{item.precoDe}}</td>
+          <td>{{item.nomenclatura}}</td>
+          <td>{{item.ean}}</td>
+        </tr>
+      </tbody>
+    </table>
+ </div>
