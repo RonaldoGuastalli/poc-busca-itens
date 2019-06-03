@@ -3,14 +3,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ModalDetalheComponent } from '../modal-detalhe.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDetalheComponentStub as stub } from './modal-detalhe.component.stub';
-import { ItemModelBuilder } from 'src/app/tela-inicial/build/item-model.builder';
-import { ItemService } from 'src/app/tela-inicial/services/item.service';
-import { ItemRestService } from 'src/app/tela-inicial/services/item-rest.service';
-import { ItemResponseModel } from 'src/app/tela-inicial/model/item-response.model';
-import { ItemRequestModel } from 'src/app/tela-inicial/model/item-request.model';
-import { EstoqueRequestModel } from 'src/app/tela-inicial/model/estoque-request.model';
-import { PrecoRequestModel } from 'src/app/tela-inicial/model/preco-request.model';
-import { ItemDetalheCompletoModel } from 'src/app/tela-inicial/model/item-detalhe-completo.model';
+import { ItemModelBuilder } from '../../../tela-inicial/build/item-model.builder';
+import { ItemService } from '../../../tela-inicial/services/item.service';
+import { ItemRestService } from '../../../tela-inicial/services/item-rest.service';
+import { ItemResponseModel } from '../../../tela-inicial/model/item-response.model';
+import { ItemRequestModel } from '../../../tela-inicial/model/item-request.model';
+import { EstoqueRequestModel } from '../../../tela-inicial/model/estoque-request.model';
+import { PrecoRequestModel } from '../../../tela-inicial/model/preco-request.model';
+import { ItemDetalheCompletoModel } from '../../../tela-inicial/model/item-detalhe-completo.model';
 import { InputItemComponent } from '../../input-item/input-item.component';
 
 describe('ModalDetalheComponent', () => {

@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDetalheComponent } from '../modal-detalhe/modal-detalhe.component';
-import { ItemResponseModel } from 'src/app/tela-inicial/model/item-response.model';
+import { ItemResponseModel } from '../../tela-inicial/model/item-response.model';
+
 
 @Component({
   selector: 'app-lista',

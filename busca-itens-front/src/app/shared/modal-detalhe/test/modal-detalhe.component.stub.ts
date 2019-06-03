@@ -1,13 +1,13 @@
-import { ItemResponseModel } from 'src/app/tela-inicial/model/item-response.model';
+import { ItemResponseModel } from '../../../tela-inicial/model/item-response.model';
 import { Builder } from 'builder-pattern';
-import { ItemModelBuilderStub } from 'src/app/tela-inicial/build/test/item-model.builder.stub';
-import { ItemModelBuilder } from 'src/app/tela-inicial/build/item-model.builder';
-import { ItemRequestModel } from 'src/app/tela-inicial/model/item-request.model';
-import { EstoqueRequestModel } from 'src/app/tela-inicial/model/estoque-request.model';
-import { ItemDetalheCompletoModel } from 'src/app/tela-inicial/model/item-detalhe-completo.model';
-import { PrecoRequestModel } from 'src/app/tela-inicial/model/preco-request.model';
-import { Preco } from 'src/app/tela-inicial/model/preco';
-import { Categoria } from 'src/app/tela-inicial/model/categoria';
+import { ItemModelBuilderStub } from '../../../tela-inicial/build/test/item-model.builder.stub';
+import { ItemModelBuilder } from '../../../tela-inicial/build/item-model.builder';
+import { ItemRequestModel } from '../../../tela-inicial/model/item-request.model';
+import { EstoqueRequestModel } from '../../../tela-inicial/model/estoque-request.model';
+import { ItemDetalheCompletoModel } from '../../../tela-inicial/model/item-detalhe-completo.model';
+import { PrecoRequestModel } from '../../../tela-inicial/model/preco-request.model';
+import { Preco } from '../../../tela-inicial/model/preco';
+import { Categoria } from '../../../tela-inicial/model/categoria';
 
 export class ModalDetalheComponentStub {
 

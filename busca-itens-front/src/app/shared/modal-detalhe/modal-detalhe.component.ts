@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { ItemModelBuilder } from 'src/app/tela-inicial/build/item-model.builder';
-import { ItemResponseModel } from 'src/app/tela-inicial/model/item-response.model';
+import { ItemModelBuilder } from '../../tela-inicial/build/item-model.builder';
+import { ItemResponseModel } from '../../tela-inicial/model/item-response.model';
 
 @Component({
   selector: 'app-modal-detalhe',

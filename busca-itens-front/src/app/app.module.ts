@@ -30,7 +30,7 @@ import { ItemService } from './tela-inicial/services/item.service';
     TokenModule,
     NgbModule
   ],
-  providers: [ItemRestService],
+  providers: [ItemRestService, ItemService],
   bootstrap: [AppComponent],
   entryComponents: [ListaComponent, ModalDetalheComponent]
 })

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ListaComponent } from '../lista.component';
-import { ItemResponseModel } from 'src/app/tela-inicial/model/item-response.model';
+import { ItemResponseModel } from '../../../tela-inicial/model/item-response.model';
 import { ModalDetalheComponent } from '../../modal-detalhe/modal-detalhe.component';
 import { ListaComponentStub as stub } from './lista.component.stub';
 

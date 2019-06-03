@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TelaInicialComponent } from '../tela-inicial.component';
 import { ItemService } from '../services/item.service';
 import { TelaInicialComponentStub as stub } from './tela-inicial.component.stub';
-import { AppModule } from 'src/app/app.module';
+import { AppModule } from '../../app.module';
 
 describe('TelaInicialComponent', () => {
   let component: TelaInicialComponent;

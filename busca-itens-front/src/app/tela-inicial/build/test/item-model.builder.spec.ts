@@ -17,7 +17,7 @@ describe('ItemModelBuilder', () => {
     let precoRequestModel: PrecoRequestModel;
     let itemDetalheCompletoModel: ItemDetalheCompletoModel;
 
-    describe('', () => {
+    describe('Ao utilizar o [ItemModelBuilder] deve', () => {
         let obj: ItemResponseModel;    
         beforeEach(() => {
             obj = ItemModelBuilder.get()
@@ -30,7 +30,7 @@ describe('ItemModelBuilder', () => {
             .build();
         })
     
-        it('Deve setar os dados de acordo com o autocomplete', () => {                
+        it('Setar os dados de acordo com o autocomplete', () => {                
             expect(obj).toBeTruthy(stub.mockItemResponseModel());            
         })
         
