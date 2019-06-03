@@ -65,8 +65,4 @@ export class ItemModelBuilder {
     public instanciaDeItemModel(){
         return this.itemModel = new ItemResponseModel();
     }
-
-    public getItemModel(){
-        return this.itemModel;
-    }
 }

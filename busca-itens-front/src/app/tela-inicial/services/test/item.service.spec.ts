@@ -3,7 +3,7 @@ import { ItemServiceStub as stub } from './item.service.stub'
 import { ItemRestService } from '../item-rest.service';
 import { ItemRequestModel } from '../../model/item-request.model';
 import { ItemService } from '../item.service';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { ItemModelBuilder } from '../../build/item-model.builder';
 
 describe('ItemService', () => {
@@ -42,14 +42,15 @@ describe('ItemService', () => {
                 expect(service.fazerForkJoin).toHaveBeenCalled();
             });
         });
-        xdescribe('Testando cenário com erro', () => {
+        describe('Testando cenário com erro', () => {
             beforeEach(() => {
-                spyOn(restService, 'getListaItens').and.returnValue(of());
+                spyOn(restService, 'getListaItens').and.returnValue(throwError(''));
+                spyOn(console, 'error');
                 service.getItensDaApi('')
             });
             it('caso de erro', () => {
                 service.getItensDaApi('');
-                expect(service.fazerForkJoin)
+                expect(console.error).toHaveBeenCalledWith('Erro durante a requisição do item!');
             })
         })
     });
@@ -99,14 +100,20 @@ describe('ItemService', () => {
             spyOn(restService, 'getPrecos').and.returnValue(of(stub.mockPrecoRequestModel()));
             service.getForkItens(851730).subscribe(e => resultado = e);
         });
-        it('Retorna itens do forkJoin', () => {             
-            console.log(resultado);                     
+        it('Retorna itens do forkJoin', () => {                                 
             expect(resultado).toEqual([stub.mockEstoqueRequestModel(),
                                         stub.mockItemRequestModelUnico(),
                                         stub.mockPrecoRequestModel()]);
         });
     });
 
+    // describe('dado que chame o metodo [montagemDoBuilder] resulta no objeto itemModel', () => {
+    //     beforeEach(() => {
+    //         spyOn(ItemModelBuilder, 'get').and.returnValue( of(() => stub.mockItemResponseModel()));
+    //         service.montagemDoBuilder(stub.mockItemRequestModelUnico(), )
+    //     });
+    //     expect()
+    // });
 
 
 

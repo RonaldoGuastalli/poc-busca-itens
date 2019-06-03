@@ -18,7 +18,7 @@ export class ItemService {
     this.itemRestService.getListaItens(nomeItem)
       .subscribe({
         next: res => res.map(item => this.fazerForkJoin(item)), 
-        error: err => console.log(err)      
+        error: () => {console.error('Erro durante a requisição do item!')}      
     });
   }
 
