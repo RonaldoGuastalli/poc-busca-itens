@@ -12,7 +12,6 @@ describe('TelaInicialComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      // declarations: [ TelaInicialComponent ],
       imports: [ AppModule ],
       providers: [
         {provide: ItemService, useClass: stub}
@@ -27,12 +26,36 @@ describe('TelaInicialComponent', () => {
     });
   }));
 
-  describe('',() => {
-
-    
-    it('should create', () => {
-      expect(component).toBeTruthy();
+  describe('Caso uso da componente [TelaInicialComponent] seja utilizada',() => {
+    it('uma instancia do componente deve ser criada', () => {
+      expect(component).toBeDefined();
     });
   })
+
+  describe('Ao se pesquisado um item na tela principal...', () => {
+    describe('', () => {
+      beforeEach(() => {
+        spyOn(service, 'getItensDaApi');
+        spyOn(service, 'getListaItens');
+        spyOn(component, 'listarItens')
+        component.chegadaTexto('para');
+      });      
+      it('o metodo [chegaTexto] deve ser chamado.', () => {
+        expect(component.listarItens).toHaveBeenCalled();
+      });
+    });
+
+    describe('', () => {
+      beforeEach(() => {
+        spyOn(service, 'getListaItens');
+        service.getListaItens();
+      }); 
+      it('o metodo [chegaTexto] deve ser chamado.', () => {
+        expect(service.getListaItens).toHaveBeenCalled();
+      });
+    });
+  })
+
+
 
 });
