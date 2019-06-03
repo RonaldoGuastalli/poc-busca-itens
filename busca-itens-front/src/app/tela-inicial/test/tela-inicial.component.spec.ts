@@ -39,23 +39,23 @@ describe('TelaInicialComponent', () => {
         spyOn(service, 'getListaItens');
         spyOn(component, 'listarItens')
         component.chegadaTexto('para');
-      });      
+      });   
+
       it('o metodo [chegaTexto] deve ser chamado.', () => {
         expect(component.listarItens).toHaveBeenCalled();
       });
     });
+  });
+  
+  xdescribe('Ao se pesquisado um item na tela principal', () => {
+    beforeEach(() => {
+      spyOn(service, 'getListaItens').and.returnValue( stub.mockItemResponseModelArray() );
+      component.listarItens();
+    }); 
 
-    describe('', () => {
-      beforeEach(() => {
-        spyOn(service, 'getListaItens');
-        service.getListaItens();
-      }); 
-      it('o metodo [chegaTexto] deve ser chamado.', () => {
-        expect(service.getListaItens).toHaveBeenCalled();
-      });
+    it('o metodo [listarItens] deve ser chamado retirnando a lista de itens.', () => {
+      expect(component.listaDeItens).toEqual( stub.mockItemResponseModelArray() );
     });
-  })
-
-
-
+  });
+  
 });

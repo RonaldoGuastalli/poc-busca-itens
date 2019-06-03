@@ -1,7 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { ItemService } from './services/item.service';
-import { ItemResponseModel } from './model/item-response.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -10,12 +8,8 @@ import { Observable } from 'rxjs';
   providers: [ItemService]
 })
 export class TelaInicialComponent {
-  // private itens: Observable<ItemResponseModel[]>;
-  // private estoqueLoja: Observable<ItemResponseModel[]>;
-  // private itensNovo: Observable<ItemResponseModel[]>;
-  // private objetoFinal: Observable<any>;
   private textoEmetido: string;
-  private listaDeItens: Array<any>;
+  public listaDeItens: Array<any>;
 
 
   constructor(private service: ItemService) { }
