@@ -8,8 +8,31 @@ describe('InputItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InputItemComponent ]
+      declarations: [ InputItemComponent ],
+      imports: [ ]
     })
-    .compileComponents();
+    .compileComponents()
+    .then(() => {
+      fixture = TestBed.createComponent(InputItemComponent);
+      component = fixture.componentInstance;
+      //component.pesquisa = 'tors';
+      fixture.detectChanges();
+    });
   }));
+
+  it('Deve criar component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  describe('Dado que o metodo [eventoPesquisa] seja chamado... ', () => {
+    beforeEach(() => {
+      spyOn(component.emitirEvento, 'emit');
+      component.eventoPesquisa('para');
+    });
+
+    it('Deve emitir descrição', () => {
+      expect(component.emitirEvento.emit).toHaveBeenCalledWith('para');
+    });
+  });
+
 });

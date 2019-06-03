@@ -5,16 +5,11 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   templateUrl: './input-item.component.html',
   styleUrls: ['./input-item.component.css']
 })
-export class InputItemComponent implements OnInit {
+export class InputItemComponent{
 
   public pesquisa: string;
 
   @Output() emitirEvento = new EventEmitter();
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   public eventoPesquisa(pesquisa: string){
     this.emitirEvento.emit(pesquisa);    
