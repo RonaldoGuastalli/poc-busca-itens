@@ -39,6 +39,7 @@ describe('TelaInicialComponent', () => {
         spyOn(service, 'getListaItens');
         spyOn(component, 'listarItens')
         component.chegadaTexto('para');
+        component.listaDeItens = stub.mockItemResponseModelArray();
       });   
 
       it('o metodo [chegaTexto] deve ser chamado.', () => {
@@ -47,14 +48,13 @@ describe('TelaInicialComponent', () => {
     });
   });
   
-  xdescribe('Ao se pesquisado um item na tela principal', () => {
+  describe('Ao ser pesquisado um item na tela principal', () => {
     beforeEach(() => {
-      spyOn(service, 'getListaItens').and.returnValue( stub.mockItemResponseModelArray() );
+      spyOn(service, 'getListaItens').and.returnValue( new Array<any>());
       component.listarItens();
     }); 
-
-    it('o metodo [listarItens] deve ser chamado retirnando a lista de itens.', () => {
-      expect(component.listaDeItens).toEqual( stub.mockItemResponseModelArray() );
+    it('o metodo [listarItens] deve ser chamado salvando a lista de itens na variável para uso na modal.', () => {
+      expect(component.listaDeItens).toEqual( new Array<any>() );
     });
   });
   
