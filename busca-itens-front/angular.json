@@ -75,6 +75,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
+            "codeCoverageExclude": [
+              "src/app/tela-inicial/model/**",
+              "/**/*stub*.ts"
+            
+            ],
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
