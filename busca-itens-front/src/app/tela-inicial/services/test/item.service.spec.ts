@@ -1,10 +1,9 @@
 import { TestBed, async } from "@angular/core/testing";
-import { HttpClient } from 'selenium-webdriver/http';
 import { ItemServiceStub as stub } from './item.service.stub'
 import { ItemRestService } from '../item-rest.service';
 import { ItemRequestModel } from '../../model/item-request.model';
 import { ItemService } from '../item.service';
-import { Observable, of, forkJoin } from 'rxjs';
+import { of } from 'rxjs';
 import { ItemModelBuilder } from '../../build/item-model.builder';
 
 describe('ItemService', () => {
@@ -48,7 +47,6 @@ describe('ItemService', () => {
                 spyOn(restService, 'getListaItens').and.returnValue(of());
                 service.getItensDaApi('')
             });
-
             it('caso de erro', () => {
                 service.getItensDaApi('');
                 expect(service.fazerForkJoin)
@@ -82,16 +80,30 @@ describe('ItemService', () => {
         });
     });
 
-    xdescribe('Dado que [fazerForkJoin] seja chamada >>>>', () => {
+    describe('Dado que [fazerForkJoin] seja chamada >>>>', () => {
         beforeEach(() => {
+            spyOn(service, 'getForkItens').and.returnValue( of(() => stub.mockItemResponseModel()));
+            spyOn(service, 'pushDosItensPesquisados').and.callFake(() => {});
             service.fazerForkJoin(stub.mockItemRequestModelUnico())
-            service.getForkItens(851730).subscribe(e => {
-                service.pushDosItensPesquisados(stub.mockItemRequestModelUnico(), e)
-                service.montagemDoBuilder(stub.mockItemRequestModelUnico(), e)
-            })
         });
         it('Retorna itens do forkJoin', () => {
-            expect(service.fazerForkJoin).toBeTruthy(stub.mockItemResponseModel());
+            expect(service.pushDosItensPesquisados).toHaveBeenCalled();
+        });
+    });
+
+    describe('Dado que [getForkItens] seja chamada >>>>', () => {
+        let resultado
+        beforeEach(() => {
+            spyOn(restService, 'getEstoqueItemNaLoja').and.returnValue(of(stub.mockEstoqueRequestModel()));
+            spyOn(restService, 'buscaDetalhe').and.returnValue(of(stub.mockItemRequestModelUnico()));
+            spyOn(restService, 'getPrecos').and.returnValue(of(stub.mockPrecoRequestModel()));
+            service.getForkItens(851730).subscribe(e => resultado = e);
+        });
+        it('Retorna itens do forkJoin', () => {             
+            console.log(resultado);                     
+            expect(resultado).toEqual([stub.mockEstoqueRequestModel(),
+                                        stub.mockItemRequestModelUnico(),
+                                        stub.mockPrecoRequestModel()]);
         });
     });
 

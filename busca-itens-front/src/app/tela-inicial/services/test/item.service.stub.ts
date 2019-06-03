@@ -19,6 +19,10 @@ export class ItemServiceStub {
 
     public getPrecos() { }
 
+    public forkJoin() { }
+
+    public pushDosItensPesquisados() {}
+
     //dados mockados
     public static mockItemResponseModel(): ItemResponseModel {
         return Builder<ItemResponseModel>()
