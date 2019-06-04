@@ -1,5 +1,5 @@
-import { TestBed, async } from "@angular/core/testing";
-import { ItemServiceStub as stub } from './item.service.stub'
+import { TestBed, async } from '@angular/core/testing';
+import { ItemServiceStub as stub } from './item.service.stub';
 import { ItemRestService } from '../item-rest.service';
 import { ItemRequestModel } from '../../model/item-request.model';
 import { ItemService } from '../item.service';
@@ -93,27 +93,33 @@ describe('ItemService', () => {
     });
 
     describe('Dado que [getForkItens] seja chamada >>>>', () => {
-        let resultado
+        let resultado;
         beforeEach(() => {
             spyOn(restService, 'getEstoqueItemNaLoja').and.returnValue(of(stub.mockEstoqueRequestModel()));
             spyOn(restService, 'buscaDetalhe').and.returnValue(of(stub.mockItemRequestModelUnico()));
             spyOn(restService, 'getPrecos').and.returnValue(of(stub.mockPrecoRequestModel()));
             service.getForkItens(851730).subscribe(e => resultado = e);
         });
-        it('Retorna itens do forkJoin', () => {                                 
+        it('Retorna itens do forkJoin', () => {
             expect(resultado).toEqual([stub.mockEstoqueRequestModel(),
                                         stub.mockItemRequestModelUnico(),
                                         stub.mockPrecoRequestModel()]);
         });
     });
 
-    // describe('dado que chame o metodo [montagemDoBuilder] resulta no objeto itemModel', () => {
-    //     beforeEach(() => {
-    //         spyOn(ItemModelBuilder, 'get').and.returnValue( of(() => stub.mockItemResponseModel()));
-    //         service.montagemDoBuilder(stub.mockItemRequestModelUnico(), )
-    //     });
-    //     expect()
-    // });
+    xdescribe('dado que chame o metodo [montagemDoBuilder] resulta no objeto itemModel', () => {
+        beforeEach(() => {
+            ItemModelBuilder.get();
+            spyOn(itemModelBuilder, 'dadosAutocomplete');
+            spyOn(itemModelBuilder, 'dadosEstoque');
+            spyOn(itemModelBuilder, 'eanDoItem');
+            spyOn(itemModelBuilder, 'precoDoProduto');
+            spyOn(itemModelBuilder, 'detalheCompletoDoItem');
+            spyOn(itemModelBuilder, 'build');
+            service.montagemDoBuilder(stub.mockItemRequestModelUnico(), stub.mockItemResponseModel());
+        });
+        expect(service.montagemDoBuilder).toEqual(stub.mockItemResponseModel());
+    });
 
 
 

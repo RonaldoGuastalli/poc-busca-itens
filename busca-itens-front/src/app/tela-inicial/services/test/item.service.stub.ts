@@ -23,6 +23,20 @@ export class ItemServiceStub {
 
     public pushDosItensPesquisados() {}
 
+    public get() {}
+
+  public dadosAutocomplete() {}
+
+  public dadosEstoque() {}
+
+  public eanDoItem() {}
+
+  public precoDoProduto() {}
+
+  public detalheCompletoDoItem() {}
+
+  public build() {}
+
     //dados mockados
     public static mockItemResponseModel(): ItemResponseModel {
         return Builder<ItemResponseModel>()

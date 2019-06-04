@@ -17,8 +17,8 @@ export class ItemService {
   public getItensDaApi(nomeItem: string) {
     this.itemRestService.getListaItens(nomeItem)
       .subscribe({
-        next: res => res.map(item => this.fazerForkJoin(item)), 
-        error: () => {console.error('Erro durante a requisição do item!')}      
+        next: res => res.map(item => this.fazerForkJoin(item)),
+        error: () => {console.error('Erro durante a requisição do item!')}
     });
   }
 

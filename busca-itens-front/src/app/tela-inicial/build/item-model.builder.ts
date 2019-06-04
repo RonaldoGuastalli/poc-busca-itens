@@ -9,7 +9,7 @@ export class ItemModelBuilder {
     private itemModel: ItemResponseModel;
 
     constructor() {
-        this.instanciaDeItemModel()
+        this.instanciaDeItemModel();
     }
 
     public static get() {
