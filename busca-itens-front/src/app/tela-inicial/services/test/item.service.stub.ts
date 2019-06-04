@@ -8,6 +8,7 @@ import { ItemDetalheCompletoModel } from '../../model/item-detalhe-completo.mode
 import { PrecoRequestModel } from '../../model/preco-request.model';
 import { Preco } from '../../model/preco';
 import { Categoria } from '../../model/categoria';
+import { ItemModel } from '../../model/item.model';
 
 export class ItemServiceStub {
 
@@ -21,23 +22,24 @@ export class ItemServiceStub {
 
     public forkJoin() { }
 
-    public pushDosItensPesquisados() {}
+    public pushDosItensPesquisados() { }
 
-    public get() {}
+    public get() { }
 
-  public dadosAutocomplete() {}
+    public dadosAutocomplete() { }
 
-  public dadosEstoque() {}
+    public dadosEstoque() { }
 
-  public eanDoItem() {}
+    public eanDoItem() { }
 
-  public precoDoProduto() {}
+    public precoDoProduto() { }
 
-  public detalheCompletoDoItem() {}
+    public detalheCompletoDoItem() { }
 
-  public build() {}
+    public build() { }
 
-    //dados mockados
+    public push() { }
+
     public static mockItemResponseModel(): ItemResponseModel {
         return Builder<ItemResponseModel>()
             .codigoItem(851730)
@@ -92,17 +94,58 @@ export class ItemServiceStub {
     public static mockEstoqueRequestModel(): EstoqueRequestModel[] {
         return [
             Builder<EstoqueRequestModel>()
-                .estoqueLoja(2)
+                .codigoItem(851730)
+                .estoqueLoja(2)                
                 .estoqueApoio(2)
                 .reservaVirtual(2)
                 .estoqueCd(2)
                 .estoqueCdApoio(2)
                 .filial(101)
-                .codigoItem(851730)
                 .build()
         ]
     }
 
+    ///ususado
+    public static mockEstoqueRequestModelUnico(): EstoqueRequestModel[] {
+        return [Builder<EstoqueRequestModel>()
+            .codigoItem(851730)
+            .estoqueLoja(2)
+            .estoqueApoio(2)
+            .reservaVirtual(2)
+            .estoqueCd(2)
+            .estoqueCdApoio(2)
+            .filial(101)
+            .build()]
+    }
+
+    public static mockItensModel(): ItemModel{
+        return Builder<ItemModel>()
+            .itens(ItemServiceStub.mockItemDetalheCompletoModelArray())
+            .build()
+    }
+
+    public static mockItemDetalheCompletoModelArray(): ItemDetalheCompletoModel[] {
+        return [Builder<ItemDetalheCompletoModel>()
+            .codigo(851730)
+            .codigoFabricante(1000)
+            .ean(1000)
+            .precoDe(10.00)
+            .precoPor(10.00)
+            .principioAtivo('fenol')
+            .origemDesconto('promocao')
+            .quantidade(10)
+            .codigoPrincipioAtivo(10)
+            .classeTerapeutica('TS')
+            .nomenclatura('paracetamol dc')
+            .nomenclaturaDetalhada('paracetamos dc 150mg')
+            .situacaoItem('ok')
+            .advertencias(['cuidado risco de morte'])
+            .categorias([ItemModelBuilderStub.categoria()])
+            .build()]
+    }
+
+
+    ///usado
     public static mockItemDetalheCompletoModel(): ItemDetalheCompletoModel {
         return Builder<ItemDetalheCompletoModel>()
             .codigo(851730)
@@ -123,11 +166,13 @@ export class ItemServiceStub {
             .build()
     }
 
-    public static mockPrecoRequestModel(): PrecoRequestModel {
-        return Builder<PrecoRequestModel>()
+
+    ///usando
+    public static mockPrecoRequestModel(): PrecoRequestModel[] {
+        return [Builder<PrecoRequestModel>()
             .codigoItem(851730)
-            .preco(ItemModelBuilderStub.preco())
-            .build()
+            .preco(ItemServiceStub.preco())
+            .build()]
     }
 
     public static preco(): Preco {
@@ -145,5 +190,13 @@ export class ItemServiceStub {
             .descricao('remedios')
             .nivel(10)
             .build()
+    }
+
+    public static mockForkJoin() {
+        return [
+            ItemServiceStub.mockEstoqueRequestModel(),
+            ItemServiceStub.mockItensModel(),
+            ItemServiceStub.mockPrecoRequestModel()
+        ]
     }
 }

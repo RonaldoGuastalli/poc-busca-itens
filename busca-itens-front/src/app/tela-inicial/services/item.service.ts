@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import { ItemRestService } from './item-rest.service';
 import { ItemModelBuilder } from '../build/item-model.builder';
@@ -46,7 +47,7 @@ export class ItemService {
     );
   }
 
-  public montagemDoBuilder(item: ItemRequestModel, res: any): ItemResponseModel {
+  public montagemDoBuilder(item: ItemRequestModel, res: any): ItemResponseModel {  
     return ItemModelBuilder.get()
       .dadosAutocomplete(item)
       .dadosEstoque(res[0][0])

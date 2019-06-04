@@ -5,6 +5,7 @@ import { ItemRequestModel } from '../../model/item-request.model';
 import { ItemService } from '../item.service';
 import { of, throwError } from 'rxjs';
 import { ItemModelBuilder } from '../../build/item-model.builder';
+import { ItemResponseModel } from '../../model/item-response.model';
 
 describe('ItemService', () => {
 
@@ -22,6 +23,7 @@ describe('ItemService', () => {
                 { provide: ItemRestService, useClass: stub },
                 { provide: ItemRequestModel, useClass: stub },
                 { provide: ItemModelBuilder, useClass: stub }
+
             ]
         })
         service = testBed.get(ItemService);
@@ -107,19 +109,26 @@ describe('ItemService', () => {
         });
     });
 
-    xdescribe('dado que chame o metodo [montagemDoBuilder] resulta no objeto itemModel', () => {
+    describe('dado que chame o metodo [montagemDoBuilder] ...', () => {        
+        let resultado: ItemResponseModel;
         beforeEach(() => {
-            ItemModelBuilder.get();
-            spyOn(itemModelBuilder, 'dadosAutocomplete');
-            spyOn(itemModelBuilder, 'dadosEstoque');
-            spyOn(itemModelBuilder, 'eanDoItem');
-            spyOn(itemModelBuilder, 'precoDoProduto');
-            spyOn(itemModelBuilder, 'detalheCompletoDoItem');
-            spyOn(itemModelBuilder, 'build');
-            service.montagemDoBuilder(stub.mockItemRequestModelUnico(), stub.mockItemResponseModel());
+            resultado = service.montagemDoBuilder(stub.mockItemRequestModelUnico(), stub.mockForkJoin());           
         });
-        expect(service.montagemDoBuilder).toEqual(stub.mockItemResponseModel());
+        it('resulta no objeto item model construido.', () => {                    
+            expect(Object.assign({}, resultado)).toEqual(Object.assign({}, stub.mockItemResponseModel()))
+        });          
     });
+
+    xdescribe('dado que chame o metodo [montagemDoBuilder] ...', () => {       
+        beforeEach(() => {
+            service.getListaItens();
+            service.pushDosItensPesquisados(stub.mockItemRequestModelUnico(), stub.mockForkJoin());
+        });
+        it('resulta no objeto item model construido.', () => {                    
+            expect(Object.assign({}, service.montagemDoBuilder)).toEqual(Object.assign({}, stub.mockItemResponseModel()));
+        });          
+    });
+
 
 
 
